@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
-  def signup
+  def landing
+  end
+
+  def home
   end
 end

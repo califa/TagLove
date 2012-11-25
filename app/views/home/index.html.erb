@@ -1,0 +1,18 @@
+<header></header>
+<div class="sidebar">
+	<ul>
+			<li>what</li>
+			<li>is</li>
+			<li>this</li>
+			<li>shit</li>
+			<li>lol</li>
+		</ul>	
+</div>
+
+<div id="container">
+<% (1..20).each do |i| %>
+	<% rand1 = [*300..310].sample;
+	rand2 = [*200..610].sample %>
+	<%= content_tag(:div, image_tag("http://lorempixel.com/#{rand1}/#{rand2}/"), :class => "item") %>
+<% end %>
+</div>

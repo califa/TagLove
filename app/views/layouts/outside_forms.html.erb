@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(:title) %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "outside_forms", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>	
+	<% if user_signed_in? %>
+		Logged in as <strong><%= current_user.email %></strong>
+		<%= link_to 'Edit profile', edit_user_registration_path %>
+		<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+	<% end %>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+
+	<div class="signup">
+	
+	<%= yield %>
+	
+	</div>
+
+	<div id="container">
+	<% (1..20).each do |i| %>
+		<% rand1 = [*300..310].sample;
+		rand2 = [*200..610].sample %>
+		<%= content_tag(:div, image_tag("http://lorempixel.com/#{rand1}/#{rand2}/"), :class => "item") %>
+	<% end %>
+	</div>
+
+</body>
+</html>

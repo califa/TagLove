@@ -10,6 +10,8 @@ gem 'jquery-rails'
 gem 'client_side_validations'
 gem 'devise'
 gem 'cancan'
+gem 'paperclip'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'sqlite3'

@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require rails.validations
+//= require isotope
+//= require isotope_helper
 //= require_tree .

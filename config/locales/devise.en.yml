@@ -10,6 +10,19 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  activerecord:
+    errors:
+      models:
+        users:
+          attributes:
+            email: 
+              blank: "required"
+              invalid: "invalid email"
+            username:
+              blank: "required"
+            password:
+              blank: "required"
+              too_short: "needs to be atleast 6 chars"
 
   devise:
     failure:

@@ -11,3 +11,91 @@
  *= require_self
  *= require_tree .
  */
+
+*, html, body { margin: 0; padding: 0;}
+body { background: #000; position: relative; }
+
+#container { width: 100%; height: 100%;}
+
+.item {
+	width: 20%;
+	float:left;
+}
+img {
+	width: 100%;
+	height: auto;
+}
+.isotope-item {
+  -webkit-transition-property: left, top, -webkit-transform, opacity;
+     -moz-transition-property: left, top, -moz-transform, opacity;
+      -ms-transition-property: left, top, -ms-transform, opacity;
+       -o-transition-property: left, top, -o-transform, opacity;
+          transition-property: left, top, transform, opacity;
+}
+
+.logo {
+	position: absolute;
+	top: -50px;
+	width: 400px;
+	text-align: center;
+	color: #000;
+}
+
+.signup {
+	background: rgba(0,0,0,0.8);
+	position: fixed;
+	width: 400px;
+	padding: 30px 20px 40px 20px;
+	z-index: 9999;
+	text-align: center;
+	color: white;
+	font-family: Helvetica, sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+}
+	
+h2 { margin-bottom: 40px ;}
+label { text-transform: uppercase; font-size: 18px; display: block;}
+a { font-size: 12px; color: #eeeeee;}
+
+div.field_with_errors { position: relative; color: #ee2222;}
+div.field_with_errors br {display: none;}
+div.field_with_errors label.message { 
+	position: absolute; 
+	right: 360px;
+	width: 100px;
+	text-transform: lowercase;
+	top: 3px;
+	font-size: 12px;
+	padding: 12px;
+	background: #ee2222;
+	color: black; 
+}
+div.field_with_errors label.message:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent transparent #ee2222;
+      top: 13px;
+      right: -10px;
+	}
+
+
+input { 
+	width: 270px; 
+	padding: 0 15px;
+	height: 40px; 
+	border: 1px solid white; 
+	margin-bottom: 20px;
+	font-size: 18px;
+}
+
+.button {
+	width: 300px;
+	margin-top: 20px;
+}
+
+div.field_with_errors input { background: #eeaaaa;}

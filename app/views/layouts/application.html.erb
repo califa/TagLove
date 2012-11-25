@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gather</title>
+  <title><%= full_title(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body>	
 	<% if user_signed_in? %>
 		Logged in as <strong><%= current_user.email %></strong>
 		<%= link_to 'Edit profile', edit_user_registration_path %>

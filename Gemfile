@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails'
-gem 'bootstrap-sass' --ignore-dependencies
-gem 'bcrypt-ruby' --ignore-dependencies
-gem 'faker' --ignore-dependencies
-gem 'will_paginate' --ignore-dependencies
-gem 'bootstrap-will_paginate' --ignore-dependencies
-gem 'jquery-rails' --ignore-dependencies
-gem 'client_side_validations' --ignore-dependencies
-gem 'devise' --ignore-dependencies
-gem 'cancan' --ignore-dependencies
-gem 'paperclip' --ignore-dependencies
-gem 'aws-sdk' --ignore-dependencies
+gem 'rails' 
+gem 'bootstrap-sass'
+gem 'bcrypt-ruby'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'jquery-rails'
+gem 'client_side_validations'
+gem 'devise'
+gem 'cancan'
+gem 'paperclip'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'sqlite3'

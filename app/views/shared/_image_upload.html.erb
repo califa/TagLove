@@ -1,0 +1,14 @@
+<div class="image-upload">
+	
+<% form_for(@image) do |f| %>
+	
+		<%= f.label :img %>
+		<%= f.file_field :img %>
+		
+		<%= f.label :tag_id %>
+		<%= f.select(:tag_id, @tags.collect {|tag| [tag.title, tag.id]}, 
+					 :allow_blank => false) %>
+	
+<% end %>
+		
+</div>

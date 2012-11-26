@@ -4,9 +4,6 @@ class ImagesUsers < ActiveRecord::Migration
   	create_table :images_users, :id => false do |t|
  		t.references :images, :users
 	end
-
-	add_index :images_users, [:image_id, :user_id]
-
   end
 
   def down

@@ -1,4 +1,7 @@
 Gather::Application.routes.draw do
+  resources :images
+
+
   devise_for :users
 
   root :to => "home#landing"

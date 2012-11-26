@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails' --ignore-dependencies
+gem 'rails'
 gem 'bootstrap-sass' --ignore-dependencies
 gem 'bcrypt-ruby' --ignore-dependencies
 gem 'faker' --ignore-dependencies

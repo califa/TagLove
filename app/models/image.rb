@@ -7,6 +7,8 @@ class Image < ActiveRecord::Base
 
   has_attached_file :img,
                     :storage => :s3,
-                    :s3_credentials => S3_CREDENTIALS
+                    :s3_credentials => S3_CREDENTIALS,
+                    :path => ":id.:extension",
+                    :styles => { small: "400" }
 
 end

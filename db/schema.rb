@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126025810) do
+ActiveRecord::Schema.define(:version => 20121128031450) do
 
   create_table "images", :force => true do |t|
     t.integer  "uploader_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20121126025810) do
     t.string   "img_content_type"
     t.integer  "img_file_size"
     t.datetime "img_updated_at"
+    t.integer  "tag_id"
   end
 
   create_table "ranks", :force => true do |t|
@@ -52,7 +53,6 @@ ActiveRecord::Schema.define(:version => 20121126025810) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "username"
-    t.integer  "tag_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

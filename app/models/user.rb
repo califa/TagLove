@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :ranks
   has_many :tags, :through => :ranks
-  has_many :images_as_uploader, :foreign_key => :uploader, :class_name => "Image"
+  has_many :uploads, :foreign_key => :uploader_id, :class_name => "Image"
   has_and_belongs_to_many :images
 
   # Setup accessible (or protected) attributes for your model

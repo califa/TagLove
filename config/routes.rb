@@ -1,11 +1,13 @@
 Gather::Application.routes.draw do
+  get "stream/home"
+
   resources :images
 
 
   devise_for :users
 
   root :to => "home#landing"
-  match '/home', to: "home#index"
+  match '/home', to: "stream#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

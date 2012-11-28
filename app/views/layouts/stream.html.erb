@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(:title) %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "gatherye", :media => "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>	
+	<div id="sidebar">
+		<% if user_signed_in? %>
+			Logged in as <strong><%= current_user.username %></strong>
+			<%= link_to 'Edit profile', edit_user_registration_path %>
+			<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+		<% end %>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<%= yield :sidebar %>
+	</div>
+	<div id="main">
+		<%= yield %>
+	</div>
+</body>
+</html>

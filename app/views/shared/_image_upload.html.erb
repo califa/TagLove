@@ -5,9 +5,14 @@
 		<!--<%= f.label :img %>-->
 		<%= f.file_field :img %>
 		
-		<!--<%= f.label :tag_id %>-->
-		<%= f.select(:tag_id, @tags.collect {|tag| [tag.title, tag.id]}, 
-					 :allow_blank => false) %>
+		<!-- <%= f.label :tag_id %>-->
+		
+		<% @tags.each do |t| %>
+		
+			<%= f.radio_button :tag_id, t.id %>
+			<%= label :image_tag_id, t.id, t.title %>
+		
+		<% end %>
 					 
 		<%= f.submit "Submit Image" %>					 
 	

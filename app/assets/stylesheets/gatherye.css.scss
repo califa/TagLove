@@ -24,3 +24,22 @@ html, body { height: 100%; }
  #image_tag_id { width: 80%; margin-bottom: 20px;}
 
  .image-upload input { width: 80% ;}
+
+ .image-upload input[type="radio"] {
+ 	position: absolute;
+ 	opacity: 0;
+ 	z-index: -9999;
+ }
+
+.image-upload label {
+	background: #eee;
+	border-radius: 5px;
+	width: 50%;
+	margin: 0 auto 10px;
+	font-size: 12px;
+	padding: 10px 0;
+}
+
+  .image-upload input[type="submit"] {
+ 	margin-top: 20px;
+ }

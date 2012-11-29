@@ -3,8 +3,8 @@ Gather::Application.routes.draw do
 
   resources :images
 
-
   devise_for :users
+  # match '/users/:id', :to => 'users#show', :as => :user
 
   root :to => "home#landing"
   match '/home', to: "stream#home"

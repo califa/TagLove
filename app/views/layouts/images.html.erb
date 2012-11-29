@@ -7,18 +7,22 @@
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "gatherye", :media => "all" %>
   <%= csrf_meta_tags %>
+  
+  <style type="text/css">
+
+  	.confirm-upload {
+  		background: #57C06A;
+  		color: #fff;
+  		border: 1px solid #41A557;
+  		text-align: center;
+  		margin: 50px auto;
+
+  	}
+
+  </style>
 </head>
 <body>	
 	<div id="container">		
-		<% if user_signed_in? %>
-			<div class="item nav-item">
-				<%= link_to "Logged in as #{current_user.username}", '/hey' %>
-			</div>
-			<!-- <%= link_to 'Edit profile', edit_user_registration_path %> -->
-			<div class="item nav-item"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></div>
-		<% end %>
-		<!--<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p> -->
 		<%= yield %>
 	</div>
 </body>

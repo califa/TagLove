@@ -11,4 +11,6 @@ class Image < ActiveRecord::Base
                     :path => ":id.:extension",
                     :styles => { small: "400" }
 
+
+  scope :desc, order("images.created_at DESC")
 end

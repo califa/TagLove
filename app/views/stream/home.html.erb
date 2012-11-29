@@ -1,10 +1,15 @@
-<%= render 'shared/image_upload', object: @image %>
-<!--
-<% content_for :sidebar do %>
-	<% Tag.all.each do |tag| %>
-		<%= content_tag(:li, tag.title, class: "tag") %>
+
+
+
+<div id="container">
+		<div class="item nav-item">
+			<%= render 'shared/image_upload', object: @image %>
+		</div>
+	<% @allimages.each do |i| %>
+		<div class="item <%= i.tag.title.downcase %>">
+			<%= image_tag(i.img.url, :alt => i.tag.title) %>
+		</div>
 	<% end %>
-<% end %>
+</div>	
 
 
--->

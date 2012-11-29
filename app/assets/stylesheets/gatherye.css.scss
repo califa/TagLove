@@ -1,8 +1,26 @@
 
 html, body { height: 100%; }
-#sidebar { 
+// #sidebar { 
+// 	background: red;
+// 	height: 100%;
+// 	width: 150px; 
+// 	padding: 20px;
+// }
+
+.nav-item { background: blue; text-align: center}
+.nav-item a {
+	display: block;
+	width: 100%;
+	text-align: center;
+	padding: 20px 0;
 	background: red;
-	height: 100%;
-	width: 150px; 
-	padding: 20px;
-}
+ }
+
+ .image-upload { width: 100%;}
+
+ .image-upload { padding: 0; margin: 0;}
+
+ #image_img { width: 60%; margin-top: 20px; font-size: 14px; padding: 10px;}
+ #image_tag_id { width: 80%; margin-bottom: 20px;}
+
+ .image-upload input { width: 80% ;}

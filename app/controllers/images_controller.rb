@@ -2,8 +2,9 @@ class ImagesController < ApplicationController
 	layout 'images'
 	respond_to :html, :json
 		def index
-			@images = Image.all
-			respond_with({:images => @images}.as_json)
+			@image = Image.find(params[:id])
+			respond_with(@image)
+			# redirect_to('/home')
 		end
 
 		def show
@@ -14,7 +15,7 @@ class ImagesController < ApplicationController
 		end
 
 		def create
-			@image = Image.create(params[:image], :uploader_id => current_user.id)
+			@image = current_user.uploads.create(params[:image])
 			@tags =  Tag.all # change to current_user.tags
 			#render :text => "OK"
 			respond_with(@image)

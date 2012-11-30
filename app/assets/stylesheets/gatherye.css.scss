@@ -43,3 +43,9 @@ html, body { height: 100%; }
   .image-upload input[type="submit"] {
  	margin-top: 20px;
  }
+
+ .image-upload input[type="radio"]:checked + label {
+ 	background: #AAC9B1;
+ 	font-weight: bold;
+
+ }

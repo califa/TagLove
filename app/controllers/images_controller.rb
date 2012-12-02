@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
 	layout 'images'
-	respond_to :html, :json, :post
+	respond_to :html, :json
 		def index
 			@image = Image.find(params[:id])
 			respond_with(@image)
@@ -19,19 +19,33 @@ class ImagesController < ApplicationController
 			@tag = @image.tag
 
 			current_user.edit_rank(@tag, 10)
-
 			respond_with(@image)
 		end
 
-		def collect
+		def like
+			# This is also unlike
+			user_images = current_user.images
 			image = Image.find(params[:id])
-	  		current_user.images << image
-	  		
-	  		tag = image.tag
-	  		uploader = image.uploader
-	  		if uploader != current_user do
-		  		uploader.edit_rank(tag, 50)
-		  		current_user.edit_rank(tag, 1)
-		  	end
+			tag = image.tag
+			uploader = image.uploader
+
+			if (user_images.include?(image)) #if user already likes image
+
+				#delete
+				user_images.delete(image)
+				#set points
+				current_user.edit_rank(tag, -1) if (uploader != current_user)
+
+
+			else #if user doesn't already have image liked
+
+				#add images
+ 		  		user_images << image
+ 		  		#set points		  		
+		  		if (uploader != current_user)
+			  		uploader.edit_rank(tag, 50)
+			  		current_user.edit_rank(tag, 1)
+			  	end
+		    end
 	    end
 end

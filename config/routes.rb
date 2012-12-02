@@ -2,7 +2,7 @@ Gather::Application.routes.draw do
   get "stream/home"
 
   resources :images, :only => [:create, :show, :index] do
-    post 'collect' => 'images#collect', :on => :member
+    post 'like' => 'images#like', :on => :member
   end
 
   devise_for :users

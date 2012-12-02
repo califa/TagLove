@@ -22,5 +22,17 @@
 		<p class="alert"><%= alert %></p> -->
 		<%= yield %>
 	</div>
+
+	<script type="text/javascript">
+
+		$(function() {
+
+			$('.item-options.like').click(function() {
+				$(this).parent('.item').toggleClass('item-liked');
+			});
+			console.log('item clicked');
+		});
+
+	</script>
 </body>
 </html>

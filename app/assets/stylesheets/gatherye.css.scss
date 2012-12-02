@@ -69,7 +69,7 @@ html, body { height: 100%; }
  	opacity: 1;
  }
 
- .item-options.collect {
+ .item-options.like {
  	left: 10px;
  }
 
@@ -81,7 +81,7 @@ html, body { height: 100%; }
  	background: #fff;
  }
 
- .item.item-collected .item-options.collect {
+ .item.item-liked .item-options.like {
  	background: #000;
  	color: white;
  	opacity: 1;

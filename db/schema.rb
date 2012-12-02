@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128031450) do
+ActiveRecord::Schema.define(:version => 20121202050031) do
 
   create_table "images", :force => true do |t|
     t.integer  "uploader_id"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(:version => 20121128031450) do
     t.integer  "img_file_size"
     t.datetime "img_updated_at"
     t.integer  "tag_id"
+  end
+
+  create_table "images_users", :force => true do |t|
+    t.integer "image_id"
+    t.integer "user_id"
   end
 
   create_table "ranks", :force => true do |t|
@@ -50,8 +55,6 @@ ActiveRecord::Schema.define(:version => 20121128031450) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
     t.string   "username"
   end
 

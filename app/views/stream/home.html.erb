@@ -1,9 +1,21 @@
 		<div class="item nav-item">
 			<%= render 'shared/image_upload', object: @image %>
 		</div>
+		<div class="item nav-item">
+			<% @user.ranks.each do |r| %>
+				<%= Tag.find(r.tag_id).title %> : <%= r.points.to_i %>
+				
+				
+			<% end %>
+		</div>
 	<% @allimages.each do |i| %>
-		<div class="item <%= i.tag.title.downcase %>">
+		<div class="item <%= i.tag.title.downcase %>" id="img<%= i.id %>">
 			<%= image_tag(i.img.url, :alt => i.tag.title) %>
+			<%= link_to('Collect', image_collect_path(i), :remote => true,
+						 :class => "item-options collect") %>
+
+			<!-- <div class="item-options collect">Collect</div> -->
+			<div class="item-options tag-type">Fashion</div>
 		</div>
 	<% end %>
 

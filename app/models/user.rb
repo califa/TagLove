@@ -20,4 +20,23 @@ class User < ActiveRecord::Base
    					uniqueness: { case_sensitive: false }
   validates :username, uniqueness: { case_sensitive: false }, presence: true
   validates :password, presence: true, length: { minimum: 6 }
+
+
+
+  def find_rank(tag_id)
+    self.ranks.where(:tag_id => tag_id)
+  end
+
+
+  def add_to_rank(tag_id, points)
+    if !self.find_rank(tag_id)
+      self.ranks.create(:tag_id => tag_id)
+    end
+
+    # Add points
+    rank = self.find_rank(tag_id).first
+    rank.points = rank.points.to_i + 10
+    rank.save
+  end
+
 end

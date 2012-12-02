@@ -16,8 +16,14 @@ class ImagesController < ApplicationController
 
 		def create
 			@image = current_user.uploads.create(params[:image])
-			@tags =  Tag.all # change to current_user.tags
-			#render :text => "OK"
+			@tag = @image.tag
+
+			current_user.add_to_rank(@tag.id, 10)
+
 			respond_with(@image)
 		end
+
+		def collect
+	  		current_user.images << collected_image
+	    end
 end

@@ -9,13 +9,15 @@
 			<% end %>
 		</div>
 	<% @allimages.each do |i| %>
-		<div class="item <%= i.tag.title.downcase %>" id="img<%= i.id %>">
+		<div class="item 
+					<%= "item-collected " if current_user.images.include?(i) %>
+					<%= i.tag.title.downcase %>" id="img<%= i.id %>">
 			<%= image_tag(i.img.url, :alt => i.tag.title) %>
-			<%= link_to('Collect', image_collect_path(i), :remote => true,
-						 :class => "item-options collect") %>
+			<%= link_to('Collect', collect_image_path(i), 
+						:method => :post, :remote => true, :class => "item-options collect") %>
 
 			<!-- <div class="item-options collect">Collect</div> -->
-			<div class="item-options tag-type">Fashion</div>
+			<div class="item-options tag-type"><%= i.tag.title %></div>
 		</div>
 	<% end %>
 

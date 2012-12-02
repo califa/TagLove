@@ -3,11 +3,11 @@ class StreamController < ApplicationController
 
   def home
   	@image = current_user.uploads.build
-  	@tags = Tag.all
+  	@tags = current_user.tags
   	@user = current_user
   	@allimages = Image.desc.all
   	@id = current_user.id
   end
 
-  
+
 end

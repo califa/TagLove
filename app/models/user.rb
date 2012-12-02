@@ -22,20 +22,21 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
 
 
+#  before_destroy {|user| user.images.clear}
 
-  def find_rank(tag_id)
-    self.ranks.where(:tag_id => tag_id)
+  def find_rank(tag)
+    self.ranks.where(:tag_id => tag.id)
   end
 
 
-  def add_to_rank(tag_id, points)
-    if !self.find_rank(tag_id)
-      self.ranks.create(:tag_id => tag_id)
+  def edit_rank(tag, points)
+    if self.find_rank(tag).empty?
+      self.ranks.create(:tag_id => tag.id)
     end
 
     # Add points
-    rank = self.find_rank(tag_id).first
-    rank.points = rank.points.to_i + 10
+    rank = self.find_rank(tag).first
+    rank.points = rank.points.to_i + points
     rank.save
   end
 

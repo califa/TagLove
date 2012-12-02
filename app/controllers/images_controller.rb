@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
 	layout 'images'
-	respond_to :html, :json
+	respond_to :html, :json, :post
 		def index
 			@image = Image.find(params[:id])
 			respond_with(@image)
@@ -18,12 +18,20 @@ class ImagesController < ApplicationController
 			@image = current_user.uploads.create(params[:image])
 			@tag = @image.tag
 
-			current_user.add_to_rank(@tag.id, 10)
+			current_user.edit_rank(@tag, 10)
 
 			respond_with(@image)
 		end
 
 		def collect
-	  		current_user.images << collected_image
+			image = Image.find(params[:id])
+	  		current_user.images << image
+	  		
+	  		tag = image.tag
+	  		uploader = image.uploader
+	  		if uploader != current_user do
+		  		uploader.edit_rank(tag, 50)
+		  		current_user.edit_rank(tag, 1)
+		  	end
 	    end
 end

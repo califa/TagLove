@@ -32,7 +32,7 @@ html, body { height: 100%; }
  }
 
 .image-upload label {
-	background: #eee;
+	background: #ddd;
 	border-radius: 5px;
 	width: 50%;
 	margin: 0 auto 10px;
@@ -44,11 +44,16 @@ html, body { height: 100%; }
  	margin-top: 20px;
  }
 
+ .image-upload label:hover {
+ 	background: #fff;
+ }
+
  .image-upload input[type="radio"]:checked + label {
  	background: #AAC9B1;
  	font-weight: bold;
-
  }
+
+
 
 
  .item-options {

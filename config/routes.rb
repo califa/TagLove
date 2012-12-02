@@ -1,7 +1,9 @@
 Gather::Application.routes.draw do
   get "stream/home"
 
-  resources :images
+  resources :images, :only => [:create, :show, :index] do
+    post 'collect' => 'images#collect', :on => :member
+  end
 
   devise_for :users
   # match '/users/:id', :to => 'users#show', :as => :user
@@ -9,7 +11,7 @@ Gather::Application.routes.draw do
   root :to => "home#landing"
   match '/home', to: "stream#home"
 
-  
+ # map.connect '/image/collect/:id', :controller => 'images', :action => 'collect'
 
 
   # The priority is based upon order of creation:

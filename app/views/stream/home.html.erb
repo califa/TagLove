@@ -26,9 +26,10 @@
 	<% @allimages.each do |i| %>
 		<div class="item 
 					<%= "item-liked " if current_user.images.include?(i) %>
+					<%= "mine " if current_user.uploads.include?(i) %>
 					<%= i.tag.title.downcase %>" id="img<%= i.id %>">
 			<%= image_tag(i.img.url, :alt => i.tag.title) %>
-			<%= link_to('Like', like_image_path(i), 
+			<%= link_to('', like_image_path(i), 
 						:method => :post, :remote => true, :class => "item-options like") %>
 
 			<!-- <div class="item-options collect">Collect</div> -->

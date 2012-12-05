@@ -28,9 +28,26 @@
 		$(function() {
 
 			$('.item-options.like').click(function() {
-				$(this).parent('.item').toggleClass('item-liked');
+				$parentItem = $(this).parent('.item');
+				$parentItem.toggleClass('item-liked');
+
+				if ($parentItem.hasClass('item-liked') && !$parentItem.hasClass('mine')) {
+					var offset = $(this).offset();
+					var $newpoint = $('<div class="newpoint">1</div>');
+					
+					$('body').append($newpoint);
+					$newpoint.css({
+						'top': offset.top - 10,
+						'left': offset.left
+					});
+
+					$newpoint.animate({
+						'top': offset.top - 60,
+						'opacity': 0
+					})
+					console.log($newpoint)
+				}
 			});
-			console.log('item clicked');
 		});
 
 	</script>

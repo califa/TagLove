@@ -7,7 +7,7 @@
 		
 		<!-- <%= f.label :tag_id %>-->
 		
-		<% bronze_filter = 'points > ' + BRONZE_POINTS.to_s %>
+		<% bronze_filter = 'points >= ' + BRONZE_POINTS.to_s %>
 		<% @tags.where(bronze_filter).each do |t| %>
 		
 			<%= f.radio_button :tag_id, t.id %>

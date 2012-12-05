@@ -1,13 +1,28 @@
 		<div class="item nav-item">
-			<%= render 'shared/image_upload', object: @image %>
-		</div>
-		<div class="item nav-item">
-			<% @user.ranks.each do |r| %>
-				<%= Tag.find(r.tag_id).title %> : <%= r.points.to_i %>
-				
-				
+			<% if !@user.ranks.where('points >= 10').empty? %>
+				<%= render 'shared/image_upload', object: @image %>
 			<% end %>
 		</div>
+		<% ranks = @user.ranks.all(:order => 'points DESC') %>
+		<% if !ranks.empty? %>
+			<div class="item nav-item tag-ranks">
+				<% ranks.each do |r| %>
+					<h3 class="progressheader <%= points_to_rank(r.points.to_i) %>"><%= Tag.find(r.tag_id).title %></h3>
+					<div class="progressbar">
+						<div class="progress" style="width: 
+							<%= points_to_percent(r.points.to_i) %>%">
+						</div>
+						<div class="background">
+							<div class="nomedal"></div>
+							<div class="bronze"></div>
+							<div class="silver"></div>
+							<div class="gold"></div>
+						</div>
+					</div>
+
+				<% end %>
+			</div>
+		<%end%>
 	<% @allimages.each do |i| %>
 		<div class="item 
 					<%= "item-liked " if current_user.images.include?(i) %>

@@ -18,7 +18,7 @@ class Image < ActiveRecord::Base
   scope :desc, order("images.created_at DESC")
 
   def like
-    current_user.images << self
+    self.uploader.images << self
   end
 
 

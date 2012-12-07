@@ -7,10 +7,11 @@
 		<% if !ranks.empty? %>
 			<div class="item nav-item tag-ranks">
 				<% ranks.each do |r| %>
-					<h3 class="progressheader <%= points_to_rank(r.points.to_i) %>"><%= Tag.find(r.tag_id).title %></h3>
+				<div id="tag<%= r.id %>">
+					<h3 class="progressheader <%= r.points_to_rank %>"><%= Tag.find(r.tag_id).title %></h3>
 					<div class="progressbar">
 						<div class="progress" style="width: 
-							<%= points_to_percent(r.points.to_i) %>%">
+							<%= r.points_to_percent %>%">
 						</div>
 						<div class="background">
 							<div class="nomedal"></div>
@@ -19,7 +20,7 @@
 							<div class="gold"></div>
 						</div>
 					</div>
-
+				</div>
 				<% end %>
 			</div>
 		<%end%>
@@ -29,8 +30,7 @@
 					<%= "mine " if current_user.uploads.include?(i) %>
 					<%= i.tag.title.downcase %>" id="img<%= i.id %>">
 			<%= image_tag(i.img.url, :alt => i.tag.title) %>
-			<%= link_to('', like_image_path(i), 
-						:method => :post, :remote => true, :class => "item-options like") %>
+			<%= link_to('', like_image_path(i), :class => "item-options like") %>
 
 			<!-- <div class="item-options collect">Collect</div> -->
 			<div class="item-options tag-type"><%= i.tag.title %></div>

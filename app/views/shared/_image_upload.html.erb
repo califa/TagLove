@@ -1,6 +1,6 @@
 <div class="image-upload">
 	
-<%= form_for(object, :remote => true) do |f| %>
+<%= form_for(object) do |f| %>
 	 
 		<!--<%= f.label :img %>-->
 		<%= f.file_field :img %>
@@ -8,9 +8,12 @@
 		<!-- <%= f.label :tag_id %>-->
 		
 		<% bronze_filter = 'points >= ' + BRONZE_POINTS.to_s %>
-		<% @tags.where(bronze_filter).each do |t| %>
-		
-			<%= f.radio_button :tag_id, t.id %>
+		<% @tags.where(bronze_filter).each_with_index do |t, i| %>
+			<% if (i == 0) %>
+				<%= f.radio_button :tag_id, t.id, :checked => true %>
+			<% else %>
+				<%= f.radio_button :tag_id, t.id %>
+			<% end %>
 			<%= label :image_tag_id, t.id, t.title %>
 		
 		<% end %>

@@ -5,6 +5,8 @@ class Image < ActiveRecord::Base
   belongs_to :uploader, :class_name => "User" 
   has_and_belongs_to_many :users
 
+  after_create :like
+
   has_attached_file :img,
                     :storage => :s3,
                     :s3_credentials => S3_CREDENTIALS,
@@ -14,4 +16,10 @@ class Image < ActiveRecord::Base
   validates :tag, presence: true
 
   scope :desc, order("images.created_at DESC")
+
+  def like
+    current_user.images << self
+  end
+
+
 end

@@ -15,8 +15,10 @@ class ImagesController < ApplicationController
 		end
 
 		def create
-			@image = current_user.uploads.create(params[:image])
+			@image = current_user.uploads.create(params[:id])
 			@tag = @image.tag
+
+			logger.info @image.inspect
 
 			current_user.edit_rank(@tag, 10)
 			respond_with(@image)
@@ -46,6 +48,14 @@ class ImagesController < ApplicationController
 			  		uploader.edit_rank(tag, 50)
 			  		current_user.edit_rank(tag, 1)
 			  	end
+		    end
+
+		    percent = current_user.find_rank(tag).points_to_percent
+
+		    respond_with do |format| 
+		    	format.json {
+		    		render :json => { width: percent, tag: tag }
+		    	}
 		    end
 	    end
 end

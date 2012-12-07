@@ -27,7 +27,8 @@
 
 		$(function() {
 
-			$('.item-options.like').click(function() {
+			$('.item-options.like').click(function(e) {
+				e.preventDefault();
 				$parentItem = $(this).parent('.item');
 				$parentItem.toggleClass('item-liked');
 
@@ -47,7 +48,18 @@
 					})
 					console.log($newpoint)
 				}
+
+				$.getJSON(
+					$(this).attr('href'),
+					{},
+					function(response) {
+						$('div#' + response.tag).find('div.progress').width(response.width);
+					}
+				);
+				return false;
 			});
+
+			
 		});
 
 	</script>

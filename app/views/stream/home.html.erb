@@ -3,11 +3,11 @@
 				<%= render 'shared/image_upload', object: @image %>
 			<% end %>
 		</div>
-		<% ranks = @user.ranks.all(:order => 'points DESC') %>
+		<% ranks = @user.ranks.where('points > 0').order('points DESC') %>
 		<% if !ranks.empty? %>
 			<div class="item nav-item tag-ranks">
 				<% ranks.each do |r| %>
-				<div id="tag<%= r.id %>">
+				<div id="tag<%= r.tag_id %>" data-points="<%= r.points %>" class="tag-container">
 					<h3 class="progressheader <%= r.points_to_rank %>"><%= Tag.find(r.tag_id).title %></h3>
 					<div class="progressbar">
 						<div class="progress" style="width: 

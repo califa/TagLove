@@ -45,6 +45,8 @@ module ApplicationHelper
 			return "silver"
 		elsif points >= BRONZE_POINTS
 			return "bronze"
+		else
+			return ""
 		end
 	end
 

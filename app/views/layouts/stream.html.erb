@@ -53,13 +53,47 @@
 					$(this).attr('href'),
 					{},
 					function(response) {
-						$('div#' + response.tag).find('div.progress').width(response.width);
+						// Do things after like
+						var $tagdiv = $('div#tag' + response.tag);
+
+						// Add if doesn't exist
+						if ($tagdiv.length == 0) {
+							var tagdiv = "<div id='tag" + response.tag + "' ";
+							tagdiv += "data-points='" + response.points + "' ";
+							tagdiv += " class='tag-container'>";
+							tagdiv += "<h3 class='progressheader " + response.rank + "'>" + response.tagtitle + "</h3>";
+							tagdiv += "<div class='progressbar'>";
+							tagdiv += "<div class='progress' style='width:" + response.width + "%'></div>";
+							tagdiv += "<div class='background'>"
+							tagdiv += "<div class='nomedal'></div><div class='bronze'></div><div class='silver'></div><div class='gold'></div>"
+							tagdiv += "</div></div></div>"
+							$(tagdiv).appendTo('.tag-ranks');
+						}
+
+						// Change Width & set points
+						$tagdiv.find('div.progress').width(response.width + '%');
+						$tagdiv.data("points", response.points); //doesn't change the dom
+
+						// Set rank
+						$tagdiv.find('h3.progressheader').removeClass('gold').removeClass('bronze').removeClass('silver').addClass(response.rank);
+
+						// Remove if set to zero
+						if (response.points == 0) {
+							$tagdiv.slideUp();
+							$tagdiv.remove();
+						}
+
+						$(window).resize();
+
 					}
 				);
 				return false;
 			});
 
-			
+			var reorderTags = function() { //This will currently FUCK UP people with no tagranks
+				tagbox = $('.tag-ranks');
+				array = tagbox.find('div.tag-container');
+			};
 		});
 
 	</script>

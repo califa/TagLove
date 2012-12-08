@@ -48,11 +48,15 @@ class ImagesController < ApplicationController
 			  	end
 		    end
 
-		    percent = current_user.find_rank(tag).points_to_percent
+		    rank = current_user.find_rank(tag).first
+		    points = rank.points
+		    percent = rank.points_to_percent.to_s
+		    tag_s = tag.id.to_s
+		    tagtitle = tag.title
 
 		    respond_with do |format| 
 		    	format.json {
-		    		render :json => { width: percent, tag: tag }
+		    		render :json => { width: percent, tag: tag_s, tagtitle: tagtitle, points: points, rank: rank.points_to_rank }
 		    	}
 		    end
 	    end

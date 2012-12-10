@@ -1,0 +1,37 @@
+		<% ranks = @user.ranks.where('points > 0').order('points DESC') %>
+		
+			<div class="item nav-item tag-ranks">
+				<% if !ranks.empty? %>
+				<% ranks.each do |r| %>
+				<div id="tag<%= r.tag_id %>" data-points="<%= r.points %>" class="tag-container">
+					<h3 class="progressheader <%= r.points_to_rank %>"><%= Tag.find(r.tag_id).title %></h3>
+					<div class="progressbar">
+						<div class="progress" style="width: 
+							<%= r.points_to_percent %>%">
+						</div>
+						<div class="background">
+							<div class="nomedal"></div>
+							<div class="bronze"></div>
+							<div class="silver"></div>
+							<div class="gold"></div>
+						</div>
+					</div>
+				</div>
+				<% end %>
+				<% end %>
+			</div>
+		
+	<% @allimages.each do |i| %>
+		<div class="item 
+					<%= "item-liked " if current_user.images.include?(i) %>
+					<%= "mine " if current_user.uploads.include?(i) %>
+					<%= i.tag.title.downcase %>" id="img<%= i.id %>">
+			<%= image_tag(i.img.url, :alt => i.tag.title) %>
+			<%= link_to('', like_image_path(i), :class => "item-options like") %>
+			<div class="item-options tag-type"><%= i.tag.title %></div>
+			<%= link_to(i.uploader.username, user_path(i.uploader.id), :class => "item-options item-user") %>
+		</div>
+	<% end %>
+
+
+

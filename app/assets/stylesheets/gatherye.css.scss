@@ -72,23 +72,19 @@ html, body { height: 100%; }
 
  }
 
+
+
  .item-options {
  	position: absolute;
  	background: rgba(255,255,255,0.5);
  	border-radius: 5px;
- 	top: 10px;
  	padding: 5px;
  	opacity: 0;
  	transition: opacity .25s ease-in-out;
  	-webkit-transition: opacity .25s ease-in-out;
- }
+ 	color: black;
+ 	text-decoration: none;
 
- .item:hover .item-options {
- 	opacity: 1;
-
- }
-
- .item-options {
  	&:hover {
  		background: #fff;
  		-webkit-transition: opacity 1s ease-in-out;
@@ -96,6 +92,7 @@ html, body { height: 100%; }
 
  	&.like {
  		left: 10px;
+ 		top: 10px;
  		background: none;
  		background: image_url('hearts.png') no-repeat;
  		width: 23px;
@@ -108,17 +105,36 @@ html, body { height: 100%; }
 
  	&.tag-type {
  		right: 10px;
+ 		top: 10px;
  		font-size: 12px;
  	}
- 	
+
+ 	&.item-user {
+ 		right: 10px;
+ 		top: none;
+ 		bottom: 15px;
+ 		font-size: 12px;
+ 	}
  }
 
+ .item:hover .item-options {
+ 	opacity: 1;
+ }
 
  .item.item-liked .item-options.like {
  	background-position: -46px 0;
  	opacity: 1;
  }
 
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
 
 
 

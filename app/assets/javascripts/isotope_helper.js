@@ -28,6 +28,7 @@ $(function() {
 				layout: 'masonry',
 				transformsEnabled: false,
 			    masonry: { columnWidth: adj_width }
+
 			});
 
 			$container.find('img').width(adj_width);

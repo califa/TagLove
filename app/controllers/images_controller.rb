@@ -15,11 +15,13 @@ class ImagesController < ApplicationController
 		end
 
 		def create
-			@image = current_user.uploads.create(params[:image])
+			@image = current_user.uploads.build(params[:image])
 			@tag = @image.tag
 
-			current_user.edit_rank(@tag, 10)
-			respond_with(@image)
+			if (@image.save)
+				current_user.edit_rank(@tag, 10)
+				respond_with(@image)
+			end
 		end
 
 		def like

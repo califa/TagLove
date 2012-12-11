@@ -1,7 +1,9 @@
 		<% if user_signed_in? %>
 			<div class="item nav-item">
-				<%= link_to "Logged in as #{current_user.username}", '/hey' %>
-				<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+				<div class="nav">
+					<span class="user-greet">Hey, <%= link_to "#{current_user.username}", '/users/' + current_user.username %></span>
+					<%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "logout" %>
+				</div>
 			</div>
 		<% end %>
 		<div class="item nav-item">
@@ -10,26 +12,29 @@
 			<% end %>
 		</div>
 		<% ranks = @user.ranks.where('points > 0').order('points DESC') %>
-		
-			<div class="item nav-item tag-ranks">
-				<% if !ranks.empty? %>
-				<% ranks.each do |r| %>
-				<div id="tag<%= r.tag_id %>" data-points="<%= r.points %>" class="tag-container">
-					<h3 class="progressheader <%= r.points_to_rank %>"><%= Tag.find(r.tag_id).title %></h3>
-					<div class="progressbar">
-						<div class="progress" style="width: 
-							<%= r.points_to_percent %>%">
-						</div>
-						<div class="background">
-							<div class="nomedal"></div>
-							<div class="bronze"></div>
-							<div class="silver"></div>
-							<div class="gold"></div>
+			
+
+			<div class="item nav-item">
+				<div class="tag-ranks">
+					<% if !ranks.empty? %>
+					<% ranks.each do |r| %>
+					<div id="tag<%= r.tag_id %>" data-points="<%= r.points %>" class="tag-container">
+						<h3 class="progressheader <%= r.points_to_rank %>"><%= Tag.find(r.tag_id).title %></h3>
+						<div class="progressbar">
+							<div class="progress" style="width: 
+								<%= r.points_to_percent %>%">
+							</div>
+							<div class="background">
+								<div class="nomedal"></div>
+								<div class="bronze"></div>
+								<div class="silver"></div>
+								<div class="gold"></div>
+							</div>
 						</div>
 					</div>
+					<% end %>
+					<% end %>
 				</div>
-				<% end %>
-				<% end %>
 			</div>
 		
 	<% @allimages.each do |i| %>
@@ -43,7 +48,7 @@
 				<%= i.tag.title %>
 			</a>
 			<% if i.uploader != @user %>
-				<%= link_to("uploaded by " + i.uploader.username, user_path(i.uploader.id), :class => "item-options item-user") %>
+				<%= link_to("uploaded by " + i.uploader.username, '/users/' + i.uploader.username, :class => "item-options item-user") %>
 			<% end %>
 		</div>
 	<% end %>

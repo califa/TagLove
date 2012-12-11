@@ -14,6 +14,7 @@ class Image < ActiveRecord::Base
                     :styles => { small: "400" }
 
   validates :tag, presence: true
+  validates :img, :attachment_presence => true
 
   scope :desc, order("images.created_at DESC")
 

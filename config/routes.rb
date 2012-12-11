@@ -7,7 +7,8 @@ Gather::Application.routes.draw do
 
   devise_for :users
   
-  match '/users/:username', to: 'users#show'#, :as => :user
+  #resources :users, :only => [:index, :show]
+  match '/users/:username', to: 'users#show', :as => :user
 
   root :to => "home#landing"
   match '/home', to: "stream#home"

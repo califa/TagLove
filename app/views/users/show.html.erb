@@ -1,0 +1,42 @@
+		<% bronze_filter = 'points >= ' + BRONZE_POINTS.to_s %>
+		<% ranks = @pageuser.ranks.where(bronze_filter).order('points DESC') %>
+		<div class="item nav-item">
+			<div class="nav">
+				<span class="user-greet">Hey, <%= link_to "#{current_user.username}", '/users/' + current_user.username %></span>
+				<%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "logout" %>
+			</div>
+			
+				<%= link_to "< Back to Public Stream", root_path, :class => "nav back" %><br/>
+			
+		</div>
+
+			<div class="item nav-item user-ranks">
+				<div class="trophy-chest">
+				<h3 class="username"><%= @pageuser.username %><% if !@pageuser.ranks.where('points >= 10').empty? %>'s medals<% end %>
+				</h3>
+					<% if !ranks.empty? %>
+					<% ranks.each do |r| %>
+					<div class="tag-show <%= r.points_to_rank %>"><%= Tag.find(r.tag_id).title %></div>
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+		
+	<% @userimages.each do |i| %>
+		<div class="item 
+					<%= "item-liked " if current_user.images.include?(i) %>
+					<%= "mine " if current_user.uploads.include?(i) %>
+					<%= i.tag.title.downcase.gsub(" ", "") %>" id="img<%= i.id %>">
+			<%= image_tag(i.img.url, :alt => i.tag.title) %>
+			<%= link_to('', like_image_path(i), :class => "item-options like") %>
+			<a class="item-options tag-type" data-tag="<%= i.tag.title %>" data-filter="<%= i.tag.title.downcase.gsub(" ", "") %>" data-flag="false" href="#">
+				<%= i.tag.title %>
+			</a>
+			<% if i.uploader != @user %>
+				<%= link_to("uploaded by " + i.uploader.username, '/users/' + i.uploader.username, :class => "item-options item-user") %>
+			<% end %>
+		</div>
+	<% end %>
+
+
+

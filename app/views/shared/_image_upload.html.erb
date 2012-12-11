@@ -1,22 +1,26 @@
 <div class="image-upload">
 	
 <%= form_for(object) do |f| %>
-	 
+	 	
+	 	<h4>Add Image</h4>
 		<!--<%= f.label :img %>-->
 		<%= f.file_field :img %>
 		
 		<!-- <%= f.label :tag_id %>-->
 		
-		<% bronze_filter = 'points >= ' + BRONZE_POINTS.to_s %>
-		<% @tags.where(bronze_filter).each_with_index do |t, i| %>
-			<% if (i == 0) %>
-				<%= f.radio_button :tag_id, t.id, :checked => true %>
-			<% else %>
-				<%= f.radio_button :tag_id, t.id %>
+		<h4>Choose Tag</h4>
+		<div class="tagselect">
+			<% bronze_filter = 'points >= ' + BRONZE_POINTS.to_s %>
+			<% @tags.where(bronze_filter).each_with_index do |t, i| %>
+				<% if (i == 0) %>
+					<%= f.radio_button :tag_id, t.id, :checked => true %>
+				<% else %>
+					<%= f.radio_button :tag_id, t.id %>
+				<% end %>
+				<%= label :image_tag_id, t.id, t.title %>
+			
 			<% end %>
-			<%= label :image_tag_id, t.id, t.title %>
-		
-		<% end %>
+		</div>	
 					 
 		<%= f.submit "Submit Image" %>					 
 	

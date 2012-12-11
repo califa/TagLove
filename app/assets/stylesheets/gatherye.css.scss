@@ -1,5 +1,6 @@
 
-html, body { height: 100%; }
+html, body { height: 100%;}
+
 // #sidebar { 
 // 	background: red;
 // 	height: 100%;
@@ -7,21 +8,50 @@ html, body { height: 100%; }
 // 	padding: 20px;
 // }
 
-.nav-item { 
+.nav-item .nav { 
+	color: white;
+	background: #181818;
+	width: 95%;
+	padding: 10px 0;
+	margin: 10px auto;
+	font-size: 12px;
+	.user-greet { margin-left: 10px;}
 	a {
-		display: block;
-		width: 100%;
+		background: rgba(255,255,255,0.2);
+		padding: 5px;
+		border-radius: 5px;
+		text-decoration: none;
+		display: inline-block;
+		font-weight: bold;
 		text-align: center;
-		padding: 20px 0;
-		background: red;
-	 }
+		&.logout {
+			float: right;
+			margin-right: 10px;
+		}
+		&:hover {
+			background: rgba(255,255,255,0.4);
+		}		
+	}
+	&.back {
+		margin-left: 10px;
+		display: block;
+		background: #464646;
+		border-radius: 5px;
+		margin: 0 auto;
+		text-align: center;
+		text-decoration: none;
+		&:hover {
+			background: rgba(255,255,255,0.4);
+		}
+	}
+
 }
 
 
  .image-upload { 
- 	width: 100%;
- 	padding: 0; 
- 	margin: 0;
+ 	width: 95%;
+ 	padding: 10px 0 0; 
+ 	margin: 10px auto;
  }
 
  #image_img { 
@@ -38,19 +68,32 @@ html, body { height: 100%; }
  }
 
  .image-upload {
- 	background: #222;
+ 	background: #181818;
  	text-align: center;
+ 	.tagselect { width: 80%; margin: 0 auto; background: #111111; padding: 10px; box-sizing: border-box; border-radius: 10px;}
+ 	h4 { 
+ 		text-transform: uppercase; 
+ 		color: #ccc; 
+ 		font-weight: 500; 
+ 		font-size: 14px;
+ 		margin-bottom: 5px;
+ 	}
  	label {
-		background: #ddd;
+		background: #ccc;
 		border-radius: 5px;
-		width: 80%;
+		width: 100%;
 		margin: 0 auto 10px;
 		font-size: 12px;
 		padding: 10px 0;
+		font-weight: bold;
 		&:hover {
 			background: #fff;
+			cursor: pointer;
 		}
+		&:last-child { margin-bottom: 0px; }
 	}
+
+
 
  	input { 
  		width: 80% ;
@@ -59,14 +102,21 @@ html, body { height: 100%; }
 		 	opacity: 0;
 		 	z-index: -9999;
 		 	&:checked + label {
-		 		background: #AAC9B1;
- 				font-weight: bold;	
+		 		background: #A1632C;	
+ 				color: white;
 		 	}
 		}
 		&[type="submit"] {
 			margin-top: 20px;
+			border-radius: 5px;
+			&:hover {
+				background: white;
+				cursor: pointer;
+			}
 		}
  	}
+
+
 
 
 
@@ -138,7 +188,7 @@ html, body { height: 100%; }
 
 
 
-.nav-item.tag-ranks { padding-top: 10px; background: #111;}
+.nav-item .tag-ranks { padding: 10px 0 3px; background: #181818; width: 95%; margin: 10px auto;}
 .progressbar { 
 	position: relative; 
 	box-sizing: border-box; 
@@ -196,6 +246,41 @@ html, body { height: 100%; }
 	}
 }
 
+
+.nav-item.user-ranks {
+	margin: 10px 0;
+	font-weight: bold;
+	text-align: center;	
+	.username {
+		margin: 8px auto 15px;
+		color: white;
+	}
+	.trophy-chest {
+		.tag-show {
+			border-radius: 20px;
+			margin: 0 5px 10px;
+			color: white;
+			padding: 10px;
+			display: inline-block;
+			font-size: 12px;
+			&.bronze {
+				background: #BC864F; 
+				border: 5px solid #935644;
+				color: #834634;
+			}
+			&.silver {
+				background: #9296A3;
+				border: 5px solid #626365;
+				color: #525355;
+			}
+			&.gold {
+				background: #D3A45C;
+				border: 5px solid #A1632C;
+				color: #91531C;
+			}
+		}
+	}
+}
 
 .newpoint {
 	border-radius: 50px;

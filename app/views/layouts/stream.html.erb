@@ -46,6 +46,7 @@
 					{},
 					function(response) {
 						// Do things after like
+						var $tagRanks = $('.tag-ranks');
 						var $tagdiv = $('div#tag' + response.tag);
 
 						// Add if doesn't exist
@@ -59,7 +60,7 @@
 							tagdiv += "<div class='background'>"
 							tagdiv += "<div class='nomedal'></div><div class='bronze'></div><div class='silver'></div><div class='gold'></div>"
 							tagdiv += "</div></div></div>"
-							$(tagdiv).appendTo('.tag-ranks');
+							$(tagdiv).appendTo($tagRanks);
 						}
 
 						// Change Width & set points
@@ -73,6 +74,48 @@
 						if (response.points == 0) {
 							$tagdiv.slideUp();
 							$tagdiv.remove();
+						}
+
+						// Reorder ranks
+						console.log('reorderin');
+						ranks = $tagRanks.children('.tag-container');
+						ranks.detach().sort(function(a,b) {
+							return $(b).data('points') - $(a).data('points');
+						});
+						$tagRanks.append(ranks);
+
+
+						var $imageUpload = $('div.image-upload');
+						// If new bronze medal
+						if (response.new_bronze_flag && response.rank == "bronze") {
+							
+							var newtag = "<input id='image_tag_id_" + response.tag + "' ";
+							newtag += "name='image[tag_id]' type='radio' value='" + response.tag + "' />";
+							newtag += "<label for='image_tag_id_" + response.tag + "'>";
+							newtag += response.tagtitle + "</label>";
+
+							$imageUpload.find('.tagselect').append(newtag);
+							var tags = $imageUpload.find('label');
+
+							// Show if hidden
+							if (tags.length == 1) {
+								$imageUpload.find('#image_tag_id_' + response.tag).attr('checked', 'checked');
+								$imageUpload.show();
+
+							}
+						} else if (response.new_bronze_flag && response.rank != "bronze") {
+						// If lost bronze medal
+							$("input#image_tag_id_" + response.tag).remove();
+							$("label[for='image_tag_id_" + response.tag + "']").remove();
+
+							var tags = $imageUpload.find('input[type="radio"]');
+
+							if (tags.length == 0) {
+								$imageUpload.hide();
+							} else if ($("label[checked='checked']").length == 0) {
+								console.log(tags);
+								tags.first().attr('checked', 'checked');
+							}
 						}
 
 						$(window).resize();
@@ -105,11 +148,6 @@
 			  
 				return false;
 			});
-
-			var reorderTags = function() { //This will currently FUCK UP people with no tagranks
-				tagbox = $('.tag-ranks');
-				array = tagbox.find('div.tag-container');
-			};
 		});
 
 	</script>

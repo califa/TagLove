@@ -19,12 +19,36 @@ img {
           transition-property: left, top, transform, opacity;
 }
 
+input[type="submit"] {
+		
+			border-radius: 5px;
+			&:hover {
+				background: white;
+				cursor: pointer;
+			}
+
+		}
+
+.signup a {
+	border-radius: 5px;
+	padding: 10px;
+	background: rgba(255,255,255,0.4);
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+	&:hover {
+		background: rgba(255,255,255,0.6);
+	}
+}
 .logo {
-	position: absolute;
-	top: -50px;
-	width: 400px;
+	margin: 0 auto 30px;
+	right: -10px;
+	position: relative;
 	text-align: center;
 	color: #000;
+	background: url('https://s3.amazonaws.com/taglove/logo.png');
+	width: 80px;
+	height: 80px;
 }
 
 .signup {
@@ -41,10 +65,10 @@ img {
 }
 	
 h2 { margin-bottom: 40px ;}
-label { text-transform: uppercase; font-size: 18px; display: block;}
+label { text-transform: uppercase; font-size: 14px; display: block; margin-bottom: 5px;}
 a { font-size: 12px; color: #eeeeee;}
 
-div.field_with_errors { position: relative; color: #ee2222;}
+div.field_with_errors { position: relative; color: #F8002F;}
 div.field_with_errors br {display: none;}
 div.field_with_errors label.message { 
 	position: absolute; 
@@ -54,7 +78,7 @@ div.field_with_errors label.message {
 	top: 3px;
 	font-size: 12px;
 	padding: 12px;
-	background: #ee2222;
+	background: #F8002F;
 	color: black; 
 }
 div.field_with_errors label.message:after {
@@ -64,7 +88,7 @@ div.field_with_errors label.message:after {
       height: 0;
       border-width: 5px;
       border-style: solid;
-      border-color: transparent transparent transparent #ee2222;
+      border-color: transparent transparent transparent #F8002F;
       top: 13px;
       right: -10px;
 	}

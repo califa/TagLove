@@ -1,17 +1,20 @@
+		<% provide :title, @pageuser.username %>
+
 		<% bronze_filter = 'points >= ' + BRONZE_POINTS.to_s %>
 		<% ranks = @pageuser.ranks.where(bronze_filter).order('points DESC') %>
 		<div class="item nav-item">
+			<%= link_to "< Back to Public Stream", root_path, :class => "nav back" %><br/>
 			<div class="nav">
 				<span class="user-greet">Hey, <%= link_to "#{current_user.username}", '/users/' + current_user.username %></span>
 				<%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "logout" %>
 			</div>
 			
-				<%= link_to "< Back to Public Stream", root_path, :class => "nav back" %><br/>
+				
 			
 		</div>
 
-			<div class="item nav-item user-ranks">
-				<div class="trophy-chest">
+			<div class="item nav-item">
+				<div class="user-ranks">
 				<h3 class="username"><%= @pageuser.username %><% if !@pageuser.ranks.where('points >= 10').empty? %>'s medals<% end %>
 				</h3>
 					<% if !ranks.empty? %>

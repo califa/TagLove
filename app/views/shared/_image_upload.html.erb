@@ -1,4 +1,8 @@
-<div class="image-upload">
+<div class="image-upload
+	<% if !@user.ranks.where('points >= 10').empty? %>
+		upload-hidden
+	<% end %>
+">
 	
 <%= form_for(object) do |f| %>
 	 	

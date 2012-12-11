@@ -30,6 +30,7 @@ class ImagesController < ApplicationController
 			image = Image.find(params[:id])
 			tag = image.tag
 			uploader = image.uploader
+			old_rank = current_user.find_rank(tag).first
 
 			if (user_images.include?(image)) #if user already likes image
 
@@ -50,15 +51,18 @@ class ImagesController < ApplicationController
 			  	end
 		    end
 
-		    rank = current_user.find_rank(tag).first
-		    points = rank.points
-		    percent = rank.points_to_percent.to_s
+		    new_rank = current_user.find_rank(tag).first
+		    points = new_rank.points
+		    percent = new_rank.points_to_percent.to_s
 		    tag_s = tag.id.to_s
 		    tagtitle = tag.title
 
+		    new_bronze_flag = (new_rank.points >= BRONZE_POINTS && old_rank.points < BRONZE_POINTS || new_rank.points < BRONZE_POINTS && old_rank.points >= BRONZE_POINTS )
+
+
 		    respond_with do |format| 
 		    	format.json {
-		    		render :json => { width: percent, tag: tag_s, tagtitle: tagtitle, points: points, rank: rank.points_to_rank }
+		    		render :json => { width: percent, tag: tag_s, tagtitle: tagtitle, points: points, rank: new_rank.points_to_rank, new_bronze_flag: new_bronze_flag }
 		    	}
 		    end
 	    end

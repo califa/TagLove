@@ -10,12 +10,12 @@ html, body { height: 100%;}
 
 .nav-item .nav { 
 	color: white;
-	background: #181818;
+	background: url('https://s3.amazonaws.com/taglove/tinyheart.png') no-repeat top left, #181818;
 	width: 95%;
 	padding: 10px 0;
 	margin: 10px auto;
 	font-size: 12px;
-	.user-greet { margin-left: 10px;}
+	.user-greet { margin-left: 30px; }
 	a {
 		background: rgba(255,255,255,0.2);
 		padding: 5px;
@@ -37,7 +37,7 @@ html, body { height: 100%;}
 		display: block;
 		background: #464646;
 		border-radius: 5px;
-		margin: 0 auto;
+		margin: 10px auto -15px;
 		text-align: center;
 		text-decoration: none;
 		&:hover {
@@ -48,11 +48,7 @@ html, body { height: 100%;}
 }
 
 
- .image-upload { 
- 	width: 95%;
- 	padding: 10px 0 0; 
- 	margin: 10px auto;
- }
+ 
 
  #image_img { 
  	width: 65%; 
@@ -70,6 +66,10 @@ html, body { height: 100%;}
  .image-upload {
  	background: #181818;
  	text-align: center;
+ 	width: 95%;
+ 	padding: 10px 0 0; 
+ 	margin: 10px auto;
+ 	display: none;
  	.tagselect { width: 80%; margin: 0 auto; background: #111111; padding: 10px; box-sizing: border-box; border-radius: 10px;}
  	h4 { 
  		text-transform: uppercase; 
@@ -247,38 +247,44 @@ html, body { height: 100%;}
 }
 
 
-.nav-item.user-ranks {
-	margin: 10px 0;
+.nav-item .user-ranks {
 	font-weight: bold;
 	text-align: center;	
+	margin-top:0;
+	position: relative;
+	padding: 15px 0;
+	width: 95%;
+	margin: 10px auto;
+	background: #181818;
+
 	.username {
-		margin: 8px auto 15px;
-		color: white;
+	margin: 20px 0;
+	color: white;
 	}
-	.trophy-chest {
-		.tag-show {
-			border-radius: 20px;
-			margin: 0 5px 10px;
-			color: white;
-			padding: 10px;
-			display: inline-block;
-			font-size: 12px;
-			&.bronze {
-				background: #BC864F; 
-				border: 5px solid #935644;
-				color: #834634;
-			}
-			&.silver {
-				background: #9296A3;
-				border: 5px solid #626365;
-				color: #525355;
-			}
-			&.gold {
-				background: #D3A45C;
-				border: 5px solid #A1632C;
-				color: #91531C;
-			}
+	
+	.tag-show {
+		border-radius: 20px;
+		margin: 0 5px 10px;
+		color: white;
+		padding: 10px;
+		display: inline-block;
+		font-size: 12px;
+		&.bronze {
+			background: #BC864F; 
+			border: 5px solid #935644;
+			color: #834634;
 		}
+		&.silver {
+			background: #9296A3;
+			border: 5px solid #626365;
+			color: #525355;
+		}
+		&.gold {
+			background: #D3A45C;
+			border: 5px solid #A1632C;
+			color: #91531C;
+		}
+
 	}
 }
 

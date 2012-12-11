@@ -1,15 +1,13 @@
 		<% if user_signed_in? %>
 			<div class="item nav-item">
 				<div class="nav">
-					<span class="user-greet">Hey, <%= link_to "#{current_user.username}", '/users/' + current_user.username %></span>
+					<div class="tinyheart"></div><span class="user-greet">Hey, <%= link_to "#{current_user.username}", '/users/' + current_user.username %></span>
 					<%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "logout" %>
 				</div>
 			</div>
 		<% end %>
-		<div class="item nav-item">
-			<% if !@user.ranks.where('points >= 10').empty? %>
+		<div class="item nav-item">			
 				<%= render 'shared/image_upload', object: @image %>
-			<% end %>
 		</div>
 		<% ranks = @user.ranks.where('points > 0').order('points DESC') %>
 			

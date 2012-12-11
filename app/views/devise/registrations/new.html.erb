@@ -1,9 +1,10 @@
 <% provide(:title, 'Sign Up') %>
 <div class="signup">
-<div class="logo">GatherYe</div>
 
+<div class="logo"></div>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :validate => true) do |f| %>
   <%= devise_error_messages! %>
+
   
   <div><%= f.label :username %>
   <%= f.text_field :username, :validate => { :presence => true} %></div>
